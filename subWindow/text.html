@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Project1</title>
+    </head>
+    <body style="background-color:rgba(0,0,0,0);">
+        <div class="screenText" style="color:white;font-size:60px;">
+        </div>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script>
+            var str = "あいうえお";
+            var div = document.querySelector(".screenText");
+            var count = 0;
+            var interval = setInterval(function(){
+                div.innerHTML += str[count++ % str.length];
+                if(div.clientHeight >= window.innerHeight) {
+                  div.innerHTML = div.innerHTML.substr(0, div.innerHTML.length - 1);
+                  clearInterval(interval);
+                }
+            }, 10);
+        </script>
+    </body>
+</html>
