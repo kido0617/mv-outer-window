@@ -6,7 +6,8 @@
     start.call(this);
     DataManager.setupNewGame();
     SceneManager.goto(Scene_Map);
-        
+    
+    return;
     if(Utils.isNwjs()){
       var nwGui = require('nw.gui');
       const nwWindow = nwGui.Window.get();

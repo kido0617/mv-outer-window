@@ -6,15 +6,33 @@
  *---------------------------------------------------------------------------*/
 
 /*:
- * @plugindesc aa
+ * @plugindesc 画面外演出をするためにサブウィンドウを表示するプラグイン
  * @author kido061
  *
  * @param windowPath
- * @desc 
- * @default 
+ * @desc サブウィンドウのhtmlファイルが格納されたフォルダ
+ * @default subWindow
  *
  * @help
- *  see
+ *  参考記事: http://kido0617.github.io/rpgmaker/2017-12-07-outside-window/
+ *  画面外に表示するものはhtmlファイルとなっている必要があります。
+ *  適当なフォルダにhtmlファイルを置きます(例: subWindow/index.html)
+ *  スクリプトコマンドで以下のように指定して実行します
+ * 
+ * var param = {
+ *   id: 0,         //削除時に使用するので一意の番号を指定
+ *   html: "index", //htmlファイル名
+ *   x: 816,        //ゲーム画面の左上が 0 です。 ゲーム画面の左側に表示したい場合はマイナスです
+ *   y: 0,          //ゲーム画面の左上が 0 です。 ゲーム画面の上側に表示したい場合はマイナスです
+ *   width: 400,    //サブウィンドウの幅
+ *   height: 550    //サブウィンドウの高さ
+ * };
+ * OuterWindow.show(param);   //表示
+ * 
+ * 消すときは OuterWindow.remove(0) ;   //上記で指定したidを指定します
+ * 
+ * Windows/Mac版、ブラウザ版、それぞれ同じスクリプトで実行可能です
+ *  
  */
 
 
