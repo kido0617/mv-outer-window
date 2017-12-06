@@ -1,5 +1,18 @@
+/*:
+ * @plugindesc タイトル画面ぶっ飛ばして、デベロッパーツールをデフォで出すやつ
+ *
+ * @param needDeveloperTool
+ * @desc デベロッパーツールを出すか
+ * @default false
+ *
+ * @help
+ * デバッグ用。煩わしいタイトル画面をスキップする
+ */
+
 (function(){
-  //タイトル画面ぶっ飛ばして、デベロッパーツールをデフォで出すやつ
+  
+  var parameters = PluginManager.parameters('Debug');
+  var needDeveloperTool = parameters['needDeveloperTool'] == "true";
 
   var start = Scene_Boot.prototype.start;
   Scene_Boot.prototype.start = function() {
@@ -7,7 +20,7 @@
     DataManager.setupNewGame();
     SceneManager.goto(Scene_Map);
     
-    return;
+    if(!needDeveloperTool)return;
     if(Utils.isNwjs()){
       var nwGui = require('nw.gui');
       const nwWindow = nwGui.Window.get();

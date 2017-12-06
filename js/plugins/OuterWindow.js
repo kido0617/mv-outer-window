@@ -70,7 +70,7 @@
         toolbar: false,
         frame: false, 
         show_in_taskbar: false,
-        transparent: param.transparent !== false,
+        transparent: param.transparent !== false
       });
       newWin.on('loaded', function() {
         newWin.window.initNw(win, param.x, param.y, param.width, param.height);
