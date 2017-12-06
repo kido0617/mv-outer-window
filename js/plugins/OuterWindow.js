@@ -61,7 +61,7 @@
     };
     
     OuterWindow.show = function(param){
-      if(OuterWindow.windows[param.id]){
+      if(this.windows[param.id]){
         console.error("already exist");
         return;
       }
@@ -77,12 +77,12 @@
         win.focus();
       });
       
-      OuterWindow.windows[param.id] = newWin;
+      this.windows[param.id] = newWin;
     };
     OuterWindow.remove = function(id){
-      if(OuterWindow.windows[id]){
-        OuterWindow.windows[id].close();
-        OuterWindow.windows[id] = null;
+      if(this.windows[id]){
+        this.windows[id].close();
+        this.windows[id] = null;
       }
     };
 
@@ -98,7 +98,7 @@
     window.OuterWindow = {windows: {}};
     var body = document.querySelector("body");
     OuterWindow.show = function(param){
-      if(OuterWindow.windows[param.id]){
+      if(this.windows[param.id]){
         console.error("already exist");
         return;
       }
@@ -111,7 +111,7 @@
       iframe.setAttribute("frameborder", "0");
       setIframePosition(iframe);
       body.appendChild(iframe);
-      OuterWindow.windows[param.id] = iframe;
+      this.windows[param.id] = iframe;
     };
     var setIframePosition = function(iframe){
       if(!iframe) return;
@@ -120,10 +120,10 @@
       iframe.style.top = canvas.offsetTop + iframe.outerWindowParam.y + "px";
     };
     OuterWindow.remove = function(id){
-      if(OuterWindow.windows[id]){
-        OuterWindow.windows[id].parentNode.removeChild(OuterWindow.windows[id]);
+      if(this.windows[id]){
+        this.windows[id].parentNode.removeChild(this.windows[id]);
       }
-      OuterWindow.windows[id] = null;
+      this.windows[id] = null;
     };
     window.onresize = function () {
       for(var key in OuterWindow.windows){
