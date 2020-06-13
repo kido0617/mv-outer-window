@@ -18,14 +18,10 @@
 
     var defaultX, defaultY;
 
-    window.initNw = function(parent, x, y, width, height){
+    window.initNw = function(parent, x, y){
       window.parentWindow = parent;
       defaultX = x;
       defaultY = y;
-      win.x = parent.x + x;
-      win.y = parent.y + y;
-      win.width = width;
-      win.height = height;
       parent.on("move", moveFunction);
     };
 
