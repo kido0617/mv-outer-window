@@ -67,21 +67,17 @@
       }
       var newWin = gui.Window.open(windowPath + "/" + param.html + ".html", {
         resizable: false,
+        toolbar: false,
         frame: false, 
         show_in_taskbar: false,
         transparent: param.transparent !== false
-      },(newWin) => {
-        newWin.x = win.x + param.x;
-        newWin.y = win.y + param.y;
-        newWin.width = param.width;
-        newWin.height = param.height;
-        newWin.on('loaded', function() {
-          newWin.window.initNw(win, param.x, param.y);
-          win.focus();
-        });
-        this.windows[param.id] = newWin;
+      });
+      newWin.on('loaded', function() {
+        newWin.window.initNw(win, param.x, param.y, param.width, param.height);
+        win.focus();
       });
       
+      this.windows[param.id] = newWin;
     };
     OuterWindow.remove = function(id){
       if(this.windows[id]){
